@@ -14,11 +14,7 @@ ARM11_ELF	= arm11/firm_linux_loader_arm11.elf
 all: $(TARGET).firm
 
 $(TARGET).firm: $(ARM9_ELF) $(ARM11_ELF)
-	firmtool build $@ \
-		-n 0x08006800 -e 0x1FF80000 \
-		-D $(ARM9_ELF) $(ARM11_ELF) \
-		-A 0x08006800 0x1FF80000 \
-		-C NDMA XDMA -i
+	firmtool build $@ -D $(ARM9_ELF) $(ARM11_ELF) -C NDMA XDMA -i
 
 $(ARM9_ELF): .FORCE
 	@$(MAKE) -C arm9

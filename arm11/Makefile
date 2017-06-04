@@ -24,7 +24,7 @@ CFLAGS	= -Wall -O0 -fno-builtin -nostartfiles $(ARCH) $(INCLUDE)
 all: $(TARGET).elf
 
 $(TARGET).elf: $(OBJS)
-	$(CC) -T link.ld $^ -o $@
+	$(CC) -T link.ld -Wl,--nmagic $^ -o $@
 %.o: %.c
 	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 %.o: %.s
