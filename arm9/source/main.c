@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 {
 	int has_arm9linuxfw = 0;
 
-	InitScreen(argc, argv);
+	InitScreenFbs(argc, argv);
 	ClearScreenFull(true, true);
 	DebugClear();
 

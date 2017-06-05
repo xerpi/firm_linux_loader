@@ -19,15 +19,19 @@ static u8 *bot_screen1 = NULL;
 static char debugstr[DBG_N_CHARS_X * DBG_N_CHARS_Y] = { 0 };
 static u32 debugcol[DBG_N_CHARS_Y] = { DBG_COLOR_FONT };
 
-void InitScreen(int argc, char *argv[])
+void InitScreenFbs(int argc, char *argv[])
 {
 	if (argc >= 2) {
 		/* newer entrypoints */
-		u8 **fb = (u8 **)(void *)argv[1];
-		top_screen0 = fb[0];
-		top_screen1 = fb[1];
-		bot_screen0 = fb[2];
-		bot_screen1 = fb[3];
+		struct {
+			u8 *top_left;
+			u8 *top_right;
+			u8 *bottom;
+		} *fb = (void *)argv[1];
+		top_screen0 = fb[0].top_left;
+		top_screen1 = fb[1].top_left;
+		bot_screen0 = fb[0].bottom;
+		bot_screen1 = fb[1].bottom;
 	} else {
 		/* outdated entrypoints */
 		top_screen0 = (u8 *)(*(u32 *)0x23FFFE00);
