@@ -39,12 +39,7 @@
 #define DBG_N_CHARS_Y ((DBG_END_Y - DBG_START_Y) / DBG_STEP_Y)
 #define DBG_N_CHARS_X (((DBG_END_X - DBG_START_X) / 8) + 1)
 
-#define TOP_SCREEN0 (u8*)(*(u32*)0x23FFFE00)
-#define TOP_SCREEN1 (u8*)(*(u32*)0x23FFFE00)
-#define BOT_SCREEN0 (u8*)(*(u32*)0x23FFFE08)
-#define BOT_SCREEN1 (u8*)(*(u32*)0x23FFFE08)
-
-
+void InitScreen(int argc, char *argv[]);
 void ClearScreen(unsigned char *screen, int width, int color);
 void ClearScreenFull(bool clear_top, bool clear_bottom);
 

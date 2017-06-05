@@ -1,6 +1,9 @@
 	.section .text.start
 	.global _start
 _start:
+	mov r9, r0      @ argc
+	mov r10, r1     @ argv
+
 	@ Change the stack pointer
 	mov sp, #0x27000000
 
@@ -57,6 +60,8 @@ _start:
 	mov r1, #0x340
 	str r1, [r0]
 
+	mov r0, r9
+	mov r1, r10
 	blx main
 
 	.ltorg

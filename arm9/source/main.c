@@ -49,10 +49,11 @@ static int load_file(const char *filename, uint32_t addr)
 	return 1;
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	int has_arm9linuxfw = 0;
 
+	InitScreen(argc, argv);
 	ClearScreenFull(true, true);
 	DebugClear();
 
